@@ -10,12 +10,22 @@ module.exports.identity=function(req,res){
 }
 
 module.exports.signUp=function(req,res){
+  console.log('checking auth for sign up...,',req.isAuthenticated());
+  if(req.isAuthenticated())
+   {
+    console.log('...............simple check .............');
+    return res.redirect('/users/profile');
+    
+   }  
     return res.render('user_sign_up',{
         title:"codial/sign-Up"
     });
 }
 
 module.exports.signIn=function(req,res){
+  if(req.isAuthenticated())
+     return res.redirect('/users/profile');
+
     return res.render('user_sign_in',{
         title:"codial/sign-Ip"
     });
@@ -72,5 +82,5 @@ module.exports.create=function(req,res){
 }
 //sign in and create a session for user
 module.exports.createSession=function(req,res){
-    //to-Do
+    return res.redirect('/');
 }
