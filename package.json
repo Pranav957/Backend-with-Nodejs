@@ -22,7 +22,11 @@
     "express-session": "^1.17.3",
     "layouts": "^3.0.2",
     "mongoose": "^7.3.1",
+    "node": "^16.20.1",
+    "node-sass-middleware": "^1.0.1",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sass": "^1.63.6",
+    "sass-middleware": "^0.0.3"
   }
 }

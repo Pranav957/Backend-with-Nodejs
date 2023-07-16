@@ -1,0 +1,24 @@
+// body{
+//     margin: 0;
+//     text-align: center;
+//     background-color: antiquewhite;
+// }
+body{        
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.container{
+    width: 80%;
+    margin: 0 auto; /* Center the DIV horizontally */
+}
+.fixed-header, .fixed-footer{
+    width: 100%;
+    position: fixed;        
+    background:black;
+    // padding: 10px 0;
+    color: #fff;
+}
+.main-Content{
+    //margin: 0 auto; 
+    margin-left: 40%;
+}

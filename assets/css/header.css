@@ -1,0 +1,28 @@
+.fixed-header {
+  top: 0; }
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 25px;
+  display: inline-block; }
+
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+
+.getright {
+  margin-top: 14px;
+  margin-left: 80%; }
+
+.getleft {
+  margin-top: 14px;
+  margin-right: -120px; }
+
+.fixed-header {
+  background-color: blueviolet; }
+
+.stfav {
+  margin-top: 18px; }

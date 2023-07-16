@@ -12,8 +12,26 @@ const bodyParser=new require('body-parser');
 // const passport = require('passport');
 const { getHeapCodeStatistics } = require('v8');
 const MongoStore = require('connect-mongo');
+const sassMiddleware=require('node-sass-middleware');
+app.use(sassMiddleware({
+    src:'./assets/scss',
+    dest:'./assets/css',
+    debug:true,
+   outputStyle:'extended',
+   indentedSyntax : false,
+    prefix:'/css'
+}));
+// app.use(
+//     sassMiddleware({
+//       src: path.join(__dirname, 'assets', 'scss'),
+//       dest: path.join(__dirname, 'assets', 'css'),
+//       debug: true,
+//       outputStyle: 'extended',
+//       prefix: '/css'
+//     })
+//   );
+  
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(express.static('./assets'));
 app.use(expressLayouts);//before we require routes tell all the views going to be rendered belongs to some sort of layout
 app.set('layout extractStyles',true);
@@ -36,10 +54,10 @@ app.use(session({
     // store:new MongoStore({
     //   mongooseConncetion:db,
     //   autoRemove:'disabled'
-    // }),
+    // },
     // function (err) {
     //     console.log(err || "connect- mongodb setup ok");
-    // }
+    // })
     store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/codeial_development' })
 }));
 
