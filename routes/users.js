@@ -8,8 +8,8 @@ const { route } = require('./users');
 const { Strategy } = require('passport-local');
 
 router.get('/profile',passport.checkAuthentication, userController.profile);
-router.get('/post',postController.getPost);
-router.get('/identity',userController.identity);
+// router.get('/post',postController.getPost);
+// router.get('/identity',userController.identity);
 
 router.get('/sign-up',userController.signUp);
 router.get('/sign-in',userController.signIn);

@@ -36,10 +36,9 @@ app.use(express.static('./assets'));
 app.use(expressLayouts);//before we require routes tell all the views going to be rendered belongs to some sort of layout
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
-// app.use(express.urlencoded());
 app.use(cookieParser());
 
-// app.set('view engine ','ejs');
+
 // app.set('views','./views');
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'Views'));
