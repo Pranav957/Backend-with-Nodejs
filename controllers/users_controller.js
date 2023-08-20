@@ -1,9 +1,28 @@
 const User=require('../models/users');
 module.exports.profile=function(req,res){
+  User.findById(req.params.id).then(function(user){
     res.render('profile',{
-        title:"hi its profile"
-    });
+      title:"hi its profile",
+      profile_user:user
+  });
+  }).catch(function(err){
+   console.log(`error ocvured while finding user`);
+  });
+    
 }
+
+module.exports.update=function(req,res){
+  if(req.user.id==req.params.id){
+    User.findByIdAndUpdate(req.params.id, req.body).then(function(user){
+      res.redirect('back');
+    }).catch(function(err){
+      console.log(`error while updating user`);
+    });
+  }else{
+    return res.status(401).send('Unauthorized');
+  }
+}
+// User.findByIdAndUpdate(req.params.id, {name:req.body.name, email:req.body.email})
 
 module.exports.identity=function(req,res){
     res.end('<h1>this is your identity</h1>');

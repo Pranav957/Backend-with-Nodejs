@@ -7,7 +7,8 @@ const postController=require('../controllers/post_controller');
 const { route } = require('./users');
 const { Strategy } = require('passport-local');
 
-router.get('/profile',passport.checkAuthentication, userController.profile);
+router.get('/profile/:id',passport.checkAuthentication, userController.profile);
+router.post('/update/:id',passport.checkAuthentication, userController.update);
 // router.get('/post',postController.getPost);
 // router.get('/identity',userController.identity);
 
