@@ -1,5 +1,9 @@
 const Comment=require("../models/comment");
 const Post=require("../models/posts");
+const commentMailer=require('../Mailers/commentsMailer');
+const commentEmailWorker=require('../Workers/comment_email_worker');
+const queue=require('../config/kue');
+
 
 module.exports.create=function (req, res){
     Post.findById(req.body.post).then(function(post){
@@ -9,10 +13,21 @@ module.exports.create=function (req, res){
                 content:req.body.content,
                 post:req.body.post,
                 user:req.user._id
-            }).then(function(comment){
+            }).then(async function(comment){
               post.comments.push(comment); //auto fetches id and pushed
               post.save(); //after updating something call save to say that its updated version
               res.redirect('/');
+              comment=await comment.populate('user','name email');
+            //    commentMailer.newComment(comment); here workers are being used
+            let job=queue.create('emails',comment).save(function(err){
+                   if(err)
+                   {
+                    console.log('error in sending to the queue',err);
+                    return;
+                   }
+                   console.log('job enqueued',job.id);
+            });
+
             }).catch(function(err){
                 console.log(`Error in creating comment ${err}`); 
             })

@@ -3,17 +3,21 @@ const LocalStrategy=require('passport-local').Strategy;
 const User=require("../models/users");
 
 passport.use(new LocalStrategy({
-    usernameField:'email'
-}, function(email,password,done){
+    usernameField:'email',
+    passReqToCallback:true
+}, function(req,email,password,done){
     User.findOne({email:email}).then(function(user){
+        console.log(user);
         if(!user || user.password!=password)
         {
             console.log("invalid username password");
+            req.flash('error','Invalid Username/Password');
             return done(null,false);
         }
         return done(null,user);
     }).catch(function(err){
         console.log('Error in findinf user--> passport')
+        req.flash('error',err);
         return done(err);
     })
 }));
