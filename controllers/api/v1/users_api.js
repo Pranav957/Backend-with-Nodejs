@@ -14,7 +14,7 @@ module.exports.createSession=async function(req,res)
                 message:"Invalid Username or Password"
             });
         }
-        name=user.name
+        // let name=user.name
 
         return res.json(200,{
             message:'Sign in Successfull, here is your tocken please keep it safe!',
