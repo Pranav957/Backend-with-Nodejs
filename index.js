@@ -25,7 +25,7 @@ app.use(logger(env.morgan.mode,env.morgan.options));
 if(env.name=='development')
 {
     app.use(sassMiddleware({
-        // src:'./assets/scss',
+        // src:'./assets/scss', 
         // dest:'./assets/css',
         src:path.join(__dirname,env.asset_path,'scss'),
         dest:path.join(__dirname,env.asset_path,'css'),
