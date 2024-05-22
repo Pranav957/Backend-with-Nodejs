@@ -4,8 +4,8 @@
 // const User=require('../models/users');
 
 // passport.use(new googleStrategy({
-//     clientID:"1016506928281-55sf0b97g2f9bebaqcclvp5flnteuagr.apps.googleusercontent.com",
-//     clientSecret:"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",
+//     clientID:"",
+//     clientSecret:"",
 //     callbackURL:"http://localhost:8001/users/auth/google/callback"
 // },function(accessTocken,refreshTocken,profile,done){
 //     //find user
